@@ -42,3 +42,4 @@ Quer esse visual no Firefox do PC, com cor dinâmica e tema da interface do nave
 
 - Design baseado no [Material 3 Expressive](https://m3.material.io/blog/building-with-m3-expressive), do Google.
 - O BetterVia é um projeto separado e **proprietário**, de JiGuro. Este repositório não inclui nem redistribui o módulo, só linka para ele, e não tem vínculo com os autores.
+- Desenvolvido com a ajuda do [Claude](https://claude.ai), assistente de IA da [Anthropic](https://www.anthropic.com).
