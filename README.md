@@ -6,7 +6,14 @@ Este é o irmão para celular do [MY3E Firefox Theme](https://github.com/VitzzAL
 
 ## Requisitos
 
-Foi feito e usado com o **Via + [BetterVia](https://github.com/Xposed-Modules-Repo/com.jiguro.bettervia)**, um módulo LSPosed/LSPatch que adiciona recursos ao Via. Os arquivos daqui são só CSS e HTML. Eu não testei sem o BetterVia, então não sei se o tema funciona do mesmo jeito no Via puro.
+Funciona no **Via** sem módulos. O tema usa dois campos das configurações do próprio navegador, e eu testei os dois no Via puro, sem o [BetterVia](https://github.com/Xposed-Modules-Repo/com.jiguro.bettervia):
+
+- **Custom CSS:** Configurações → Customization → Advanced → Custom CSS
+- **Logo (HTML):** Configurações → Customization → Logo
+
+Foi criado originalmente com o BetterVia, e continua funcionando com ele.
+
+**Limitação no Via puro:** o seletor de buscador aparece, mas ainda não troca de buscador ao tocar. A busca em si funciona normalmente.
 
 ## O que tem aqui
 
