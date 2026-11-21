@@ -60,6 +60,10 @@ function init(){
   /* esconde a barra original do Via, junto com o gatilho nativo (#search_bar_trigger) que cobre ela */
   var b=d.getElementById("search_submit"),box=d.querySelector(".search_bar_wrapper")||(b&&b.parentElement);
   if(box&&!box.contains(f)&&!f.contains(box))box.style.display="none";
+
+  /* o Via desliga o gesto "puxar para pesquisar" só quando o campo dele (#search_input) está em foco; faz o mesmo com o nosso */
+  var og=window.isGestureDisabled;
+  if(typeof og==="function")window.isGestureDisabled=function(){return(d.activeElement&&d.activeElement.id==="msq")||og()};
 }
 d.readyState==="loading"?d.addEventListener("DOMContentLoaded",init):init();
 })();
