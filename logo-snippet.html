@@ -1,0 +1,67 @@
+<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 17.3l-5.2 3.1 1.4-5.9L3.6 10.6l6-.5L12 4.5l2.4 5.6 6 .5-4.6 3.9 1.4 5.9z"/></svg><b id="greet">Olá</b>
+<script>
+(function(){
+var d=document;
+function init(){
+  var h=new Date().getHours();
+  d.getElementById("greet").textContent=h<5?"Boa madrugada":h<12?"Bom dia":h<18?"Boa tarde":"Boa noite";
+  /* fundo M3E: formas + zigzag */
+  if(!d.getElementById("bg")){var bg=d.createElement("div");bg.id="bg";bg.setAttribute("aria-hidden","true");
+    bg.innerHTML='<i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="zz"></i>';d.body.insertBefore(bg,d.body.firstChild);}
+  /* título + onda (fora do link, pra não abrir favoritos ao tocar) */
+  var logo=d.querySelector(".logo"),w=d.querySelector(".wave");
+  if(logo&&!d.querySelector(".headline")){var t=d.createElement("h1");t.className="headline";t.innerHTML="Para onde<br>vamos?";
+    w=d.createElement("i");w.className="wave";w.setAttribute("aria-hidden","true");logo.after(t);t.after(w);}
+
+  /* ===== barra de pesquisa PRÓPRIA (a do Via abre a pesquisa nativa ao tocar, então o seletor nunca funcionava) ===== */
+  if(d.getElementById("msf"))return;
+  var g={ /* o primeiro (Brave) é o padrão */
+    br:{name:"Brave",url:"https://search.brave.com/search?q="},
+    gg:{name:"Google",url:"https://www.google.com/search?q="},
+    dd:{name:"DuckDuckGo",url:"https://duckduckgo.com/?q="},
+    by:{name:"Bing",url:"https://www.bing.com/search?q="},
+    yt:{name:"YouTube",url:"https://www.youtube.com/results?search_query="},
+    wk:{name:"Wikipédia",url:"https://pt.wikipedia.org/w/index.php?search="},
+    yd:{name:"Yandex",url:"https://yandex.com/search/?text="}
+  },k,opts=[],saved="";
+  for(k in g)opts.push('<option value="'+k+'">'+g[k].name+'</option>');
+
+  var st=d.createElement("style");
+  st.textContent=
+   '#msf{display:flex;align-items:center;box-sizing:border-box;width:100%;height:64px;padding:0 8px;margin:0;border-radius:32px;background:var(--surface-high);box-shadow:0 1px 3px rgba(0,0,0,.18),0 0 0 0 var(--primary);transition:box-shadow .3s,background .3s;position:relative;z-index:2;animation-delay:.2s}'+
+   '#msf:focus-within{background:var(--surface-highest);box-shadow:0 2px 8px rgba(0,0,0,.2),0 0 0 2.5px var(--primary)}'+
+   '#mse{-webkit-appearance:none;appearance:none;height:44px;padding:0 14px;border:0;outline:0;border-radius:22px;background:var(--tertiary-container);color:var(--on-tertiary-container);font:600 13px var(--font);text-align:center;text-align-last:center;max-width:112px;transition:border-radius .35s var(--spring)}'+
+   '#mse:active{border-radius:12px}'+
+   '#msq{flex:1;min-width:0;height:64px;padding:0 12px;border:0;outline:0;background:transparent;color:var(--on-surface);caret-color:var(--primary);font:500 16px var(--font)}'+
+   '#msq::placeholder{color:var(--on-surface-variant);opacity:.75;font-weight:400}'+
+   '#msf button{display:grid;place-items:center;flex:none;width:48px;height:48px;border:0;outline:0;border-radius:50%;background:var(--primary);color:var(--on-primary);transition:border-radius .35s var(--spring),transform .35s var(--spring)}'+
+   '#msf button:active{border-radius:16px;transform:scale(.9)}';
+  d.head.appendChild(st);
+
+  var f=d.createElement("form");f.id="msf";f.setAttribute("autocomplete","off");
+  f.innerHTML='<select id="mse" aria-label="Buscador">'+opts.join("")+'</select>'+
+    '<input id="msq" type="text" placeholder="Pesquisar ou digitar endereço" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search">'+
+    '<button type="submit" aria-label="Pesquisar"><svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg></button>';
+  var anchor=w||logo;
+  if(anchor)anchor.after(f);else d.body.appendChild(f);
+
+  var c=d.getElementById("mse"),q=d.getElementById("msq");
+  try{saved=localStorage.se}catch(x){}
+  c.value=g[saved]?saved:"br";
+  c.onchange=function(){try{localStorage.se=c.value}catch(x){}};
+  f.onsubmit=function(ev){
+    ev.preventDefault();
+    var v=q.value.trim();if(!v)return;
+    if(/^(https?:\/\/|file:\/\/|about:)/i.test(v))location.href=v;
+    else if(/^[^\s]+\.[a-z]{2,}(\/\S*)?$/i.test(v))location.href="https://"+v;
+    else location.href=g[c.value].url+encodeURIComponent(v);
+  };
+
+  /* esconde a barra original do Via, junto com o gatilho nativo (#search_bar_trigger) que cobre ela */
+  var b=d.getElementById("search_submit"),box=d.querySelector(".search_bar_wrapper")||(b&&b.parentElement);
+  if(box&&!box.contains(f)&&!f.contains(box))box.style.display="none";
+}
+d.readyState==="loading"?d.addEventListener("DOMContentLoaded",init):init();
+})();
+document.title='云无心以出岫';
+</script>
