@@ -6,40 +6,37 @@ Este é o irmão para celular do [MY3E Firefox Theme](https://github.com/VitzzAL
 
 ## Requisitos
 
-Funciona no **Via** sem módulos. O tema usa dois campos das configurações do próprio navegador, e eu testei os dois no Via puro, sem o [BetterVia](https://github.com/Xposed-Modules-Repo/com.jiguro.bettervia):
+Funciona no **Via** sem módulos. O tema usa dois campos das configurações do próprio navegador, e o `logo-snippet.html` foi testado no Via puro, sem o [BetterVia](https://github.com/Xposed-Modules-Repo/com.jiguro.bettervia):
 
 - **Custom CSS:** Configurações → Customization → Advanced → Custom CSS
 - **Logo (HTML):** Configurações → Customization → Logo
 
-Foi criado originalmente com o BetterVia, e continua funcionando com ele.
-
-**Limitação no Via puro:** o seletor de buscador aparece, mas ainda não troca de buscador ao tocar. A busca em si funciona normalmente.
+O `logo-snippet-bettervia.html` é a versão original, feita e usada com o BetterVia, e mantém a barra de pesquisa nativa do Via. Ele não foi testado de novo depois das mudanças no outro snippet.
 
 ## O que tem aqui
 
 | Arquivo | Para quê |
 | --- | --- |
 | `homepage.css` | Todo o visual: cores, formas, animações, busca e favoritos |
-| `logo-snippet.html` | Cria a saudação, o título, a onda, o fundo e o seletor de buscador |
+| `logo-snippet.html` | Versão para o Via normal: saudação, título, onda, fundo e barra de pesquisa própria com seletor de buscador |
+| `logo-snippet-bettervia.html` | Versão original, para o BetterVia: mantém a barra de pesquisa nativa do Via (com sugestões) |
 
 ## Instalação
 
 O Via refaz o HTML da homepage sozinho quando você mexe nos favoritos. Por isso o tema fica nos campos de configuração, e não em um arquivo `homepage.html`.
 
 1. **Custom CSS:** nas configurações do Via, apague o CSS padrão e cole o conteúdo de `homepage.css`.
-2. **Logo (HTML):** no campo do logo da homepage, cole o conteúdo de `logo-snippet.html`.
+2. **Logo (HTML):** no campo **Logo**, cole o `logo-snippet.html`. Se você usa o BetterVia e quer manter a barra de pesquisa nativa, use o `logo-snippet-bettervia.html`.
 3. Abra uma nova aba para ver o resultado.
 
 ## Personalização
-
-- **Buscadores:** no `logo-snippet.html`, edite a lista `g`. O primeiro da lista é o padrão. Para a barra de endereço do Via, o buscador padrão é uma configuração separada do navegador (pode ser um buscador personalizado com `%s` no lugar da pesquisa).
+- **Buscadores:** no `logo-snippet.html`, edite a lista `g`. O primeiro da lista é o padrão. A página usa uma barra de pesquisa própria, então o buscador escolhido no seletor vale só para pesquisas feitas por ela. A barra de endereço do Via continua usando o buscador padrão configurado no navegador (pode ser um personalizado com `%s` no lugar da pesquisa).
 - **Cores:** ficam nas variáveis no início do `homepage.css`. Ao contrário da versão do Firefox, aqui a paleta é fixa (roxa) e **não** acompanha a cor do sistema.
 - **Título da aba:** a linha `document.title=...` no fim do `logo-snippet.html` define o texto que aparece na barra.
 
 ## Limitações
-
-- Ícones de favoritos com fundo branco (como o do Brave) aparecem com esse fundo. O CSS só consegue reduzir o brilho e colocar o ícone dentro de um bloco colorido.
-- Não testei em outras telas além de 1080x2400.
+- A barra de pesquisa da página inicial substitui a do Via, então ela não mostra as sugestões de pesquisa nativas. Quem quiser mantê-las pode usar o `logo-snippet-bettervia.html`.
+- Testado em telas de 1080x2400 (Galaxy M55 5G) e 720x1480 (Galaxy J8).
 
 ## Versão para computador
 
