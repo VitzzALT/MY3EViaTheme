@@ -20,6 +20,7 @@ O `logo-snippet-bettervia.html` é a versão original, feita e usada com o Bette
 | `homepage.css` | Todo o visual: cores, formas, animações, busca e favoritos |
 | `logo-snippet.html` | Versão para o Via normal: saudação, título, onda, fundo e barra de pesquisa própria com seletor de buscador |
 | `logo-snippet-bettervia.html` | Versão original, para o BetterVia: mantém a barra de pesquisa nativa do Via (com sugestões) |
+| `extras/homepage.html` | Página completa para o Theme Editor do BetterVia (já inclui o snippet antigo). Mais frágil: o Via refaz o arquivo ao editar favoritos, e o caminho do CSS vale só para o Via da Play Store |
 
 ## Instalação
 
