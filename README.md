@@ -11,7 +11,7 @@ Funciona no **Via** sem módulos. O tema usa dois campos das configurações do 
 - **Custom CSS:** Configurações → Customization → Advanced → Custom CSS
 - **Logo (HTML):** Configurações → Customization → Logo
 
-O `logo-snippet-bettervia.html` é a versão original, feita e usada com o BetterVia, e mantém a barra de pesquisa nativa do Via. Ele não foi testado de novo depois das mudanças no outro snippet.
+O `logo-snippet.html` foi testado tanto no Via puro quanto com o [BetterVia](https://github.com/Xposed-Modules-Repo/com.jiguro.bettervia). O `logo-snippet-bettervia.html` é a versão original, feita para o BetterVia, e mantém a barra de pesquisa nativa do Via (com sugestões).
 
 ## O que tem aqui
 
